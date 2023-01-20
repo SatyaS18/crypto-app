@@ -4,10 +4,10 @@ import React from "react";
 const ExchangeCard = (props) => {
   return (
     <>
-      <a href={props.url} target="blank">
+      <a href={props.url} target="_blank" rel="noreferrer">
         <VStack
           w={"56"}
-          shadow={"lg"}
+          shadow={"dark-lg"}
           p="8"
           borderRadius={"lg"}
           transition={"all 0.3s"}

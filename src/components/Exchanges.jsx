@@ -27,7 +27,7 @@ const Exchanges = () => {
         <Loader />
       ) : (
         <>
-          <HStack wrap={"wrap"}>
+          <HStack wrap={"wrap"} justify="center">
             {exchanges.map((item, index) => (
               <ExchangeCard
                 name={item.name}
