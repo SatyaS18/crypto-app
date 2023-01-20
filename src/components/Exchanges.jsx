@@ -29,7 +29,13 @@ const Exchanges = () => {
         <>
           <HStack wrap={"wrap"}>
             {exchanges.map((item, index) => (
-              <ExchangeCard name={item.name} key={index} />
+              <ExchangeCard
+                name={item.name}
+                key={index}
+                img={item.image}
+                rank={item.trust_score_rank}
+                url={item.url}
+              />
             ))}
           </HStack>
         </>
