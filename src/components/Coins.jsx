@@ -3,7 +3,7 @@ import axios from "axios";
 import { server } from "../index";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Container, HStack } from "@chakra-ui/react";
+import { Button, Container, HStack } from "@chakra-ui/react";
 import Loader from "./Loader.jsx";
 import CoinCard from "./CoinCard.jsx";
 import ErrorContainer from "./ErrorContainer.jsx";
@@ -17,6 +17,13 @@ const Coins = () => {
 
   const currencySymbol =
     currency === "inr" ? "₹" : currency === "eur" ? "€" : "$";
+
+  const changePage = (page) => {
+    setPage(page);
+    setLoading(true);
+  };
+
+  const btns = new Array(132).fill(1);
 
   useEffect(() => {
     const fetchCoins = async () => {
@@ -54,6 +61,19 @@ const Coins = () => {
                 currencySymbol={currencySymbol}
               />
             ))}
+          </HStack>
+
+          <HStack w={"full"} overflowX={"auto"} p="8">
+            {btns.map((item, index) => (
+              <Button
+                bgColor={"blackAlpha.900"}
+                color="white"
+                onClick={() => changePage(index + 1)}
+              >
+                {index + 1}
+              </Button>
+            ))}
+            )
           </HStack>
         </>
       )}
