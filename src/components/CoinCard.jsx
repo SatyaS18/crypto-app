@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const CoinCard = (props) => {
   return (
     <>
-      <Link to={`/coin/${props.id}`} target="_blank" rel="noreferrer">
+      <Link to={`/coin/${props.id}`} rel="noreferrer">
         <VStack
           w={"56"}
           shadow={"dark-lg"}
