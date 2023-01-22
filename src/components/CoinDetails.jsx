@@ -1,6 +1,7 @@
 import {
   Badge,
   Box,
+  Button,
   Container,
   HStack,
   Image,
@@ -33,6 +34,50 @@ const CoinDetails = () => {
 
   const params = useParams();
 
+  const btns = ["24h", "7d", "14d", "30d", "60d", "200d", "1y", "max"];
+
+  const switchChartStats = (key) => {
+    switch (key) {
+      case "24h":
+        setDays("24h");
+        setLoading(true);
+        break;
+      case "7d":
+        setDays("7d");
+        setLoading(true);
+        break;
+      case "14d":
+        setDays("14d");
+        setLoading(true);
+        break;
+      case "30d":
+        setDays("30d");
+        setLoading(true);
+        break;
+      case "60d":
+        setDays("60d");
+        setLoading(true);
+        break;
+      case "200d":
+        setDays("200d");
+        setLoading(true);
+        break;
+      case "1y":
+        setDays("365d");
+        setLoading(true);
+        break;
+      case "max":
+        setDays("max");
+        setLoading(true);
+        break;
+
+      default:
+        setDays("24h");
+        setLoading(true);
+        break;
+    }
+  };
+
   const currencySymbol =
     currency === "inr" ? "₹" : currency === "eur" ? "€" : "$";
 
@@ -52,7 +97,7 @@ const CoinDetails = () => {
       }
     };
     fetchCoin();
-  }, [params.id]);
+  }, [params.id, days, currency]);
 
   if (error) return <ErrorContainer message={"Error while fetching coin"} />;
 
@@ -65,6 +110,14 @@ const CoinDetails = () => {
           <Box width={"full"} borderWidth={1}>
             <Chart arr={chartArray} currency={currencySymbol} days={days} />
           </Box>
+
+          <HStack p={"4"} overflowX="auto">
+            {btns.map((i) => (
+              <Button key={i} onClick={() => switchChartStats(i)}>
+                {i}
+              </Button>
+            ))}
+          </HStack>
 
           <RadioGroup value={currency} onChange={setCurrency}>
             <HStack
