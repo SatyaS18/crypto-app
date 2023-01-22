@@ -82,7 +82,7 @@ const CoinDetails = () => {
             </HStack>
           </RadioGroup>
 
-          <VStack spacing={"4"} p="16" alignItems={"flex-start"}>
+          <VStack spacing={"4"} p="16" alignItems={"center"}>
             <Text fontSize={"small"} alignSelf="center" opacity={0.7}>
               Last Updated on{" "}
               {Date(coin.market_data.last_updated).split("G")[0]}
@@ -120,6 +120,26 @@ const CoinDetails = () => {
               high={`${currencySymbol}${coin.market_data.high_24h[currency]}`}
               low={`${currencySymbol}${coin.market_data.low_24h[currency]}`}
             />
+
+            <Box w={"full"} p="4">
+              <Item title="Max Supply" value={coin.market_data.max_supply} />
+              <Item
+                title="Circulating Supply"
+                value={coin.market_data.circulating_supply}
+              />
+              <Item
+                title="Market Cap"
+                value={`${currencySymbol}${coin.market_data.market_cap[currency]}`}
+              />
+              <Item
+                title="All Time Low"
+                value={`${currencySymbol}${coin.market_data.atl[currency]}`}
+              />
+              <Item
+                title="All Time High"
+                value={`${currencySymbol}${coin.market_data.ath[currency]}`}
+              />
+            </Box>
           </VStack>
         </>
       )}
@@ -136,6 +156,17 @@ const CustomBar = ({ high, low }) => (
       <Badge children={high} colorScheme={"green"} />
     </HStack>
   </VStack>
+);
+
+const Item = ({ title, value }) => (
+  <HStack justifyContent={"space-between"} w="full" my={"4"} px="10%">
+    <Text fontFamily={"Bebas Neue"} letterSpacing={"widest"}>
+      {title}
+    </Text>
+    <Text fontFamily={"Bebas Neue"} letterSpacing={"widest"}>
+      {value}
+    </Text>
+  </HStack>
 );
 
 export default CoinDetails;
