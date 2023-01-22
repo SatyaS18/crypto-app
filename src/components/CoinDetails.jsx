@@ -4,6 +4,7 @@ import {
   Container,
   HStack,
   Image,
+  Progress,
   Radio,
   RadioGroup,
   Stat,
@@ -114,11 +115,27 @@ const CoinDetails = () => {
               bgColor="blackAlpha.900"
               color={"white"}
             >{`#${coin.market_cap_rank}`}</Badge>
+
+            <CustomBar
+              high={`${currencySymbol}${coin.market_data.high_24h[currency]}`}
+              low={`${currencySymbol}${coin.market_data.low_24h[currency]}`}
+            />
           </VStack>
         </>
       )}
     </Container>
   );
 };
+
+const CustomBar = ({ high, low }) => (
+  <VStack>
+    <Progress value={50} colorScheme="teal" w="full" />
+    <HStack justifyContent={"space-between"} w="full">
+      <Badge children={low} colorScheme={"red"} />
+      <Text fontSize={"sm"}>24h Range</Text>
+      <Badge children={high} colorScheme={"green"} />
+    </HStack>
+  </VStack>
+);
 
 export default CoinDetails;
