@@ -5,7 +5,7 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 
 const theme = extendTheme({
   config: {
-    useSystemColorMode: true,
+    useSystemColorMode: false,
     initialColorMode: "dark",
   },
 });
