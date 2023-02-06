@@ -27,8 +27,8 @@ const Footer = () => {
             dynamic world of cryptocurrencies. With real-time market data and a
             user-friendly interface, our app makes it easy for you to buy and
             sell your favorite cryptocurrencies, manage your portfolio, and stay
-            up-to-date on market trends. Start trading today and experience the
-            power of crypto!
+            up-to-date on market trends. Stay ahead of the game and start
+            exploring the world of crypto with CryptX today!
           </Text>
         </VStack>
 
